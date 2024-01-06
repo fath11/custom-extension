@@ -669,7 +669,7 @@
       name: 'encoding.extensionName',
       description: 'encoding.description',
       extensionId: 'encoding',
-      iconURL: 'https://fath11.github.io/custom-extension/Fath/banners/encoding.svg',
+      iconURL: 'https://extensions.turbowarp.org/images/encoding.svg',
       insetIconURL: icon,
       featured: true,
       disabled: false,
