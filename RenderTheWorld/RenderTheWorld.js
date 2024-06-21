@@ -8562,64 +8562,80 @@
     lights: {
       ambientLightColor: { value: [] },
       lightProbe: { value: [] },
-      directionalLights: { value: [], properties: {
-        direction: {},
-        color: {}
-      } },
-      directionalLightShadows: { value: [], properties: {
-        shadowBias: {},
-        shadowNormalBias: {},
-        shadowRadius: {},
-        shadowMapSize: {}
-      } },
+      directionalLights: {
+        value: [], properties: {
+          direction: {},
+          color: {}
+        }
+      },
+      directionalLightShadows: {
+        value: [], properties: {
+          shadowBias: {},
+          shadowNormalBias: {},
+          shadowRadius: {},
+          shadowMapSize: {}
+        }
+      },
       directionalShadowMap: { value: [] },
       directionalShadowMatrix: { value: [] },
-      spotLights: { value: [], properties: {
-        color: {},
-        position: {},
-        direction: {},
-        distance: {},
-        coneCos: {},
-        penumbraCos: {},
-        decay: {}
-      } },
-      spotLightShadows: { value: [], properties: {
-        shadowBias: {},
-        shadowNormalBias: {},
-        shadowRadius: {},
-        shadowMapSize: {}
-      } },
+      spotLights: {
+        value: [], properties: {
+          color: {},
+          position: {},
+          direction: {},
+          distance: {},
+          coneCos: {},
+          penumbraCos: {},
+          decay: {}
+        }
+      },
+      spotLightShadows: {
+        value: [], properties: {
+          shadowBias: {},
+          shadowNormalBias: {},
+          shadowRadius: {},
+          shadowMapSize: {}
+        }
+      },
       spotLightMap: { value: [] },
       spotShadowMap: { value: [] },
       spotLightMatrix: { value: [] },
-      pointLights: { value: [], properties: {
-        color: {},
-        position: {},
-        decay: {},
-        distance: {}
-      } },
-      pointLightShadows: { value: [], properties: {
-        shadowBias: {},
-        shadowNormalBias: {},
-        shadowRadius: {},
-        shadowMapSize: {},
-        shadowCameraNear: {},
-        shadowCameraFar: {}
-      } },
+      pointLights: {
+        value: [], properties: {
+          color: {},
+          position: {},
+          decay: {},
+          distance: {}
+        }
+      },
+      pointLightShadows: {
+        value: [], properties: {
+          shadowBias: {},
+          shadowNormalBias: {},
+          shadowRadius: {},
+          shadowMapSize: {},
+          shadowCameraNear: {},
+          shadowCameraFar: {}
+        }
+      },
       pointShadowMap: { value: [] },
       pointShadowMatrix: { value: [] },
-      hemisphereLights: { value: [], properties: {
-        direction: {},
-        skyColor: {},
-        groundColor: {}
-      } },
+      hemisphereLights: {
+        value: [], properties: {
+          direction: {},
+          skyColor: {},
+          groundColor: {}
+        }
+      },
       // TODO (abelnation): RectAreaLight BRDF data needs to be moved from example to main src
-      rectAreaLights: { value: [], properties: {
-        color: {},
-        position: {},
-        width: {},
-        height: {}
-      } },
+      rectAreaLights: {
+        value: [], properties: {
+          color: {},
+          position: {},
+          width: {},
+          height: {}
+        }
+      },
       ltc_1: { value: null },
       ltc_2: { value: null }
     },
@@ -9563,8 +9579,8 @@
     this.numIntersection = 0;
     this.init = function(planes, enableLocalClipping) {
       const enabled = planes.length !== 0 || enableLocalClipping || // enable state of previous frame - the clipping code has to
-      // run another frame in order to reset the state:
-      numGlobalPlanes !== 0 || localClippingEnabled;
+        // run another frame in order to reset the state:
+        numGlobalPlanes !== 0 || localClippingEnabled;
       localClippingEnabled = enableLocalClipping;
       numGlobalPlanes = planes.length;
       return enabled;
@@ -18288,8 +18304,8 @@ void main() {
             }
             const halfFloatSupportedByExt = textureType === HalfFloatType && (extensions.has("EXT_color_buffer_half_float") || capabilities.isWebGL2 && extensions.has("EXT_color_buffer_float"));
             if (textureType !== UnsignedByteType && utils.convert(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // Edge and Chrome Mac < 52 (#9513)
-            !(textureType === FloatType && (capabilities.isWebGL2 || extensions.has("OES_texture_float") || extensions.has("WEBGL_color_buffer_float"))) && // Chrome Mac >= 52 and Firefox
-            !halfFloatSupportedByExt) {
+              !(textureType === FloatType && (capabilities.isWebGL2 || extensions.has("OES_texture_float") || extensions.has("WEBGL_color_buffer_float"))) && // Chrome Mac >= 52 and Firefox
+              !halfFloatSupportedByExt) {
               console.error("THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in UnsignedByteType or implementation defined type.");
               return;
             }
@@ -19962,7 +19978,7 @@ void main() {
   };
   function convertArray(array, type, forceClone) {
     if (!array || // let 'undefined' and 'null' pass
-    !forceClone && array.constructor === type)
+      !forceClone && array.constructor === type)
       return array;
     if (typeof type.BYTES_PER_ELEMENT === "number") {
       return new type(array);
@@ -20051,33 +20067,33 @@ void main() {
           let right;
           linear_scan: {
             forward_scan:
-              if (!(t < t1)) {
-                for (let giveUpAt = i1 + 2; ; ) {
-                  if (t1 === void 0) {
-                    if (t < t0)
-                      break forward_scan;
-                    i1 = pp.length;
-                    this._cachedIndex = i1;
-                    return this.copySampleValue_(i1 - 1);
-                  }
-                  if (i1 === giveUpAt)
-                    break;
-                  t0 = t1;
-                  t1 = pp[++i1];
-                  if (t < t1) {
-                    break seek;
-                  }
+            if (!(t < t1)) {
+              for (let giveUpAt = i1 + 2; ;) {
+                if (t1 === void 0) {
+                  if (t < t0)
+                    break forward_scan;
+                  i1 = pp.length;
+                  this._cachedIndex = i1;
+                  return this.copySampleValue_(i1 - 1);
                 }
-                right = pp.length;
-                break linear_scan;
+                if (i1 === giveUpAt)
+                  break;
+                t0 = t1;
+                t1 = pp[++i1];
+                if (t < t1) {
+                  break seek;
+                }
               }
+              right = pp.length;
+              break linear_scan;
+            }
             if (!(t >= t0)) {
               const t1global = pp[1];
               if (t < t1global) {
                 i1 = 2;
                 t0 = t1global;
               }
-              for (let giveUpAt = i1 - 2; ; ) {
+              for (let giveUpAt = i1 - 2; ;) {
                 if (t0 === void 0) {
                   this._cachedIndex = 0;
                   return this.copySampleValue_(0);
@@ -22887,9 +22903,11 @@ void main() {
     }
   };
   if (typeof __THREE_DEVTOOLS__ !== "undefined") {
-    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", { detail: {
-      revision: REVISION
-    } }));
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent("register", {
+      detail: {
+        revision: REVISION
+      }
+    }));
   }
   if (typeof window !== "undefined") {
     if (window.__THREE__) {
@@ -27868,11 +27886,13 @@ void main() {
               blockType: BlockType.BOOLEAN,
               text: this.formatMessage("RenderTheWorld.get3dState")
             },
+            /*
             {
               opcode: "render",
               blockType: BlockType.COMMAND,
               text: this.formatMessage("RenderTheWorld.render")
             },
+            */
             {
               blockType: BlockType.LABEL,
               text: this.formatMessage("RenderTheWorld.tools")
@@ -28870,7 +28890,7 @@ void main() {
        * 兼容性检查
        * @param {object} args
        */
-      isWebGLAvailable({}) {
+      isWebGLAvailable({ }) {
         this.isWebglAvailable = WebGL_default.isWebGLAvailable();
       }
       /**
@@ -28878,7 +28898,7 @@ void main() {
        * @param {object} args
        * @return {boolean}
        */
-      _isWebGLAvailable({}) {
+      _isWebGLAvailable({ }) {
         return this.isWebglAvailable;
       }
       objectLoadingCompleted({ name }) {
@@ -28943,6 +28963,7 @@ void main() {
             this.tc.style.height = String(pixelsTall) + "px";
           }
         };
+        /*
         this.runtime.renderer.draw = () => {
           if (!this.isTcShow) {
             _draw.call(this.runtime.renderer);
@@ -28951,6 +28972,7 @@ void main() {
             this.renderer.render(this.scene, this.camera);
           }
         };
+        */
         this.dirty = false;
         this.scratchCanvas = this.runtime.renderer.canvas;
         this.clock = new Clock();
@@ -29016,6 +29038,28 @@ void main() {
         this.tc.style.height = this.scratchCanvas.style.height;
         this.tc.style.display = "none";
         this.isTcShow = false;
+
+        this.render = () => {
+          if (!this.tc) {
+            this.renderer.setAnimationLoop(null)
+            return "\u26A0\uFE0F\u663E\u793A\u5668\u672A\u521D\u59CB\u5316\uFF01";
+          }
+          this._clock = this.clock.getDelta();
+          this.renderer.render(this.scene, this.camera);
+          if (this.controls.enableDamping) {
+            this.controls.update();
+          }
+        }
+
+        this.runtime.on('PROJECT_START', () => {
+          console.log(chen_RenderTheWorld_extensionId + ": Starting renders")
+          this.renderer.setAnimationLoop(this.render)
+        })
+
+        this.runtime.on('PROJECT_STOP_ALL', () => {
+          console.log(chen_RenderTheWorld_extensionId + ": Stopping renders")
+          this.renderer.setAnimationLoop(null)
+        })
       }
       /**
        * 设置3d渲染器状态
@@ -29032,28 +29076,13 @@ void main() {
         } else {
           this.tc.style.display = "none";
           this.isTcShow = false;
+          this.renderer.setAnimationLoop(null)
         }
       }
       get3dState(args) {
         return this.isTcShow;
       }
-      // _resize() {
-      // 	this.tc.style.width = this.scratchCanvas.style.width;
-      // 	this.tc.style.height = this.scratchCanvas.style.height;
-      // }
-      /**
-       * 渲染，放在主循环里
-       */
-      render(args) {
-        if (!this.tc) {
-          return "\u26A0\uFE0F\u663E\u793A\u5668\u672A\u521D\u59CB\u5316\uFF01";
-        }
-        this._clock = this.clock.getDelta();
-        this.renderer.render(this.scene, this.camera);
-        if (this.controls.enableDamping) {
-          this.controls.update();
-        }
-      }
+
       /**
        * 创建或重置长方体
        * @param {object} args
@@ -29826,7 +29855,7 @@ void main() {
         }
         this.controls.update();
       }
-      mouseCanControlCamera({}) {
+      mouseCanControlCamera({ }) {
         if (!this.tc) {
           return false;
         }
